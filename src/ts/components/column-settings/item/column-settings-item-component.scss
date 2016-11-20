@@ -1,0 +1,29 @@
+@mixin abstract-column-settings-item {
+  position: relative;
+  padding-left: 5%;
+  padding-top: 5%;
+  width: 100%;
+  height: 15%;
+}
+
+.column-settings-item:hover {
+  background-color: red;
+}
+
+.column-settings-item {
+  @include abstract-column-settings-item;
+  border-style: solid;
+  background-color: aquamarine;
+}
+
+.column-settings-item-selected {
+  @include abstract-column-settings-item;
+  border-style: solid;
+  background-color: pink;
+}
+
+.column-settings-item-content {
+  position: relative;
+  width: 90%;
+  height: 90%;
+}

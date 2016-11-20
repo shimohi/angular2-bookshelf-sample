@@ -1,0 +1,65 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+}
+
+.header-nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #336699;
+}
+
+@mixin header-button{
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+}
+
+@mixin abstract-book-list-button {
+  @include header-button;
+  left: 6%;
+}
+
+.book-list-button {
+  @include abstract-book-list-button;
+  background-color: lightgreen;
+}
+
+.book-list-button-checked {
+  @include abstract-book-list-button;
+  background-color: green;
+}
+
+@mixin abstract-viewer-button {
+  @include header-button;
+  left: 21%;
+}
+
+.viewer-button {
+  @include abstract-viewer-button;
+  background-color: lightgreen;
+}
+
+.viewer-button-checked {
+  @include abstract-viewer-button;
+  background-color: green;
+}
+
+@mixin abstract-open-settings-button {
+  @include header-button;
+  left: 36%;
+}
+
+.open-settings-button {
+  @include abstract-open-settings-button;
+  background-color: lightgreen;
+}
+.open-settings-button-checked {
+  @include abstract-open-settings-button;
+  background-color: green;
+}

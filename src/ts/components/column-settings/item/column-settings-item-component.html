@@ -1,0 +1,12 @@
+<div [ngClass]="( className | asyncState )">
+    <div class="column-settings-item-content">
+        <template ngFor let-column [ngForOf]="columnNumbers" >
+            <settings-item-sheet [columnNumber]="column" [columnType]="type"></settings-item-sheet>
+        </template>
+    </div>
+</div>
+<!--<div>-->
+    <!--<template ngFor let-column [ngForOf]="columnNumbers" >-->
+        <!--<settings-item-sheet [columnNumber]="column" [columnType]="type"></settings-item-sheet>-->
+    <!--</template>-->
+<!--</div>-->

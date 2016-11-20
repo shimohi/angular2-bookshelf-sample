@@ -1,0 +1,23 @@
+.slider {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  height: 10%;
+  overflow: hidden; }
+
+.slider-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: aquamarine; }
+
+.slider-bar {
+  position: absolute;
+  width: 90%;
+  height: 20%;
+  top: 30%;
+  left: 0;
+  background-color: #607D8B; }
+
+.circle {
+  background-color: #cfd8dc; }

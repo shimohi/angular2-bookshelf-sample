@@ -1,0 +1,7 @@
+<div class="themes" [style.display]="( display | asyncState ) ? 'block' : 'none'">
+    <div class="themes-content">
+        <template ngFor let-theme [ngForOf]="themes">
+            <theme [theme]="theme" ></theme>
+        </template>
+    </div>
+</div>

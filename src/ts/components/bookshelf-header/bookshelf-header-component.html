@@ -1,0 +1,16 @@
+<div class="header" [style.opacity] = "( display | asyncState ) ? '1.0' : '0.0'">
+    <nav class="header-nav">
+        <button
+            [ngClass]="state.openBook ? 'book-list-button' : 'book-list-button-checked'"
+            type="button"
+            (mousedown)="openBookList()">書棚</button>
+        <button
+            [ngClass]="state.openBook ? 'viewer-button' : 'viewer-button-checked'"
+            type="button"
+            (mousedown)="openViewer()">Viewer</button>
+        <button
+            [ngClass]="state.openSettings ? 'open-settings-button' : 'open-settings-button-checked'"
+            type="button"
+            (mousedown)="openSettings()">設定</button>
+    </nav>
+</div>

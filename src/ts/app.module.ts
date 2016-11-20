@@ -2,35 +2,46 @@ import "./rxjs-extensions";
 import { NgModule }      from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { FormsModule }   from "@angular/forms";
-import { HttpModule }    from "@angular/http";
-import { AppRoutingModule } from "./app-routing.module";
-// Imports for loading & configuring the in-memory web api
-import { InMemoryWebApiModule } from "angular-in-memory-web-api";
-import { InMemoryDataService }  from "./model/in-memory-data.service";
-import { AppComponent }         from "./components/header/header";
-import { DashboardComponent }   from "./components/dashbord/dashboard";
-import { HeroesComponent }      from "./components/heroes/heroes";
-import { HeroDetailComponent }  from "./components/hero-detail/hero-detail";
-import { HeroService }          from "./model/hero.service";
-import { HeroSearchComponent }  from "./components/hero-search/hero-search";
+import {BookShelfModule} from "./components/bookshelf-module";
+import {BookShelfComponent} from "./components/bookshelf-component";
+import {CapitalizePipe} from "./capitalize.pipe";
+// import {ObservablePipe, CapitalizePipe} from "./components/ObservablePipe";
 
+//
+// @NgModule({
+// 	imports: [
+// 		BrowserModule,
+// 		FormsModule,
+// 		BookShelfModule,
+// 	],
+// 	// declarations: [
+// 	// 	// ObservablePipe,
+// 	// 	CapitalizePipe,
+// 	// ],
+// 	bootstrap: [ BookShelfComponent ]
+// })
+// export class AppModule { }
+
+
+import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppComponent }   from './app.component';
+import {ColumnSettingsItemComponent} from "./components/column-settings/item/column-settings-item-component";
+import {ColumnSettingsComponent} from "./components/column-settings/column-settings-component";
+import {SettingsItemSheetComponent} from "./components/column-settings/item/sheet/settings-item-sheet-component";
+import {AsyncStatePipe} from "./components/ObservablePipe";
 
 @NgModule({
-	imports: [
-		BrowserModule,
-		FormsModule,
-		HttpModule,
-		InMemoryWebApiModule.forRoot(InMemoryDataService),
-		AppRoutingModule
-	],
+	imports:      [ BrowserModule ],
 	declarations: [
-		AppComponent,
-		DashboardComponent,
-		HeroDetailComponent,
-		HeroesComponent,
-		HeroSearchComponent
+		SettingsItemSheetComponent,
+		ColumnSettingsComponent,
+		ColumnSettingsItemComponent,
+		BookShelfComponent,
+		AsyncStatePipe,
 	],
-	providers: [ HeroService ],
-	bootstrap: [ AppComponent ]
+	bootstrap:    [ BookShelfComponent ]
 })
+
 export class AppModule { }

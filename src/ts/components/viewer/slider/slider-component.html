@@ -1,0 +1,6 @@
+<div class="slider" (mousedown)="onClick($event)">
+    <div class="slider-content">
+        <div class="slider-bar"></div>
+        <div class="circle" [ngStyle]="( style | asyncState )"></div>
+    </div>
+</div>

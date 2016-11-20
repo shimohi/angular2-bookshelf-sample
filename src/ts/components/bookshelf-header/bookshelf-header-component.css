@@ -1,0 +1,60 @@
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%; }
+
+.header-nav {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #336699; }
+
+.book-list-button {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 6%;
+  background-color: lightgreen; }
+
+.book-list-button-checked {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 6%;
+  background-color: green; }
+
+.viewer-button {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 21%;
+  background-color: lightgreen; }
+
+.viewer-button-checked {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 21%;
+  background-color: green; }
+
+.open-settings-button {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 36%;
+  background-color: lightgreen; }
+
+.open-settings-button-checked {
+  position: absolute;
+  top: 1%;
+  width: 8%;
+  height: 80%;
+  left: 36%;
+  background-color: green; }

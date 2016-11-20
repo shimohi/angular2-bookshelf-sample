@@ -1,0 +1,7 @@
+<div class="book-list" [style.display]="( display | asyncState ) ? 'block' : 'none'">
+    <div class="book-list-content">
+        <template ngFor let-bookInfo [ngForOf]="bookInfoList" >
+            <book-list-item [bookInfo]="bookInfo"></book-list-item>
+        </template>
+    </div>
+</div>
