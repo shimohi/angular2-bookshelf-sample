@@ -31,10 +31,11 @@ export class BookListStateImplFactory {
 		const cl = this.createInstance();
 		const from = bookInfo.viewList;
 		const to = cl.viewList;
-		const len = cl.viewList.length;
+		const len = from.length;
 		let i = 0 | 0 ;
 		while ( i < len ) {
 			to[i] = this.bookInfoFactory.clone(from[i]);
+			i = ( i + 1 ) | 0;
 		}
 		return cl;
 	}

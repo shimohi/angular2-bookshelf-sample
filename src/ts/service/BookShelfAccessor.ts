@@ -5,7 +5,16 @@ import { BookInfo } from "../model/bookshelf-api";
 export class BookShelfAccessor {
 
 	getBookList(): Promise<BookInfo[]> {
-		return null;
+		return Promise.resolve([
+			{
+				title: "書籍A",
+				id: "A"
+			},
+			{
+				title: "書籍B",
+				id: "B"
+			}
+		]);
 	}
 
 }

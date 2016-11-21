@@ -15,6 +15,7 @@ import {Themes} from "../service/Themes";
 import {BookShelfAccessor} from "../service/BookShelfAccessor";
 import {BookAccessor} from "../service/BookAccessor";
 import {OpenPageKeyImplFactories} from "../model/OpenPageKeyImpl";
+import {BookInfoImplFactory} from "../model/BookInfoImpl";
 
 @Component({
 	moduleId: module.id,
@@ -23,6 +24,7 @@ import {OpenPageKeyImplFactories} from "../model/OpenPageKeyImpl";
 		BookShelfAccessor,
 		Themes,
 		ViewStateImplFactory,
+		BookInfoImplFactory,
 		BookListStateImplFactory,
 		OpenPageKeyImplFactories,
 		OpenBookStateImplFactory,

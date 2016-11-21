@@ -12,7 +12,6 @@ import * as ColumnTypes from "../../../../service/ColumnTypes";
 	templateUrl: "sheet-component.html",
 	styleUrls: ["sheet-component.css"]
 })
-
 export class SheetComponent implements AfterViewInit, OnDestroy {
 
 	@Input()

@@ -37,8 +37,8 @@ export class HeaderComponent {
 		this.action.openBookList();
 	}
 
-	openSettings(): void {
-		this.action.openSettings();
+	toggleSettings(): void {
+		this.action.toggleSettings();
 	}
 
 	get display(): Observable<boolean> {

@@ -1,2 +1,11 @@
+.themeItem {
+  width: 100%;
+  height: 10%;
+  cursor: pointer; }
+
+.themeItem:hover {
+  background-color: aqua; }
+
 .selected {
-  background-color: #607D8B; }
+  background-color: #607D8B;
+  cursor: auto; }

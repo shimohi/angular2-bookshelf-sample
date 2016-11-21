@@ -1,8 +1,8 @@
 export interface UIAction {
 
-	openSettings(): void;
+	toggleSettings(): void;
 
-	closeSettings(): void;
+	// closeSettings(): void;
 
 	openViewer(): void;
 

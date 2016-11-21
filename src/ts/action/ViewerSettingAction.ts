@@ -52,6 +52,7 @@ export class ViewerSettingActionImpl implements ViewerSettingsAction {
 		const viewState = this.viewStateNotifier.getNotifiable();
 		viewState.columnType = columnType;
 		this.refreshWithResize(viewState);
+		viewState.notify();
 
 	}
 

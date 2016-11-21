@@ -10,23 +10,25 @@ export class UIActionImpl implements UIAction {
 		private uiStateNotifier: UIStateNotifier,
 	) { }
 
-	openSettings(): void {
+	toggleSettings(): void {
 		const state = this.uiStateNotifier.getNotifiable();
 		if (state.openSettings === true) {
+			state.openSettings = false;
+			state.notify();
 			return;
 		}
 		state.openSettings = true;
 		state.notify();
 	}
 
-	closeSettings(): void {
-		const state = this.uiStateNotifier.getNotifiable();
-		if (state.openSettings === false) {
-			return;
-		}
-		state.openSettings = false;
-		state.notify();
-	}
+	// closeSettings(): void {
+	// 	const state = this.uiStateNotifier.getNotifiable();
+	// 	if (state.openSettings === false) {
+	// 		return;
+	// 	}
+	// 	state.openSettings = false;
+	// 	state.notify();
+	// }
 
 	openViewer(): void {
 		const state = this.uiStateNotifier.getNotifiable();

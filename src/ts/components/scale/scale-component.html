@@ -1,4 +1,4 @@
-<div class="scale" [style.display]="( display | asyncState ) ? 'block' : 'none'">
+<div class="scale" [style.opacity]="( display | asyncState ) ? '1.0' : '0.0'">
     <div class="scale-content">
         <div class="circle" [ngStyle]="( style | asyncState )">A</div>
     </div>
