@@ -1,4 +1,4 @@
-<div class="sheets" [style.display]="( display | asyncState ) ? 'block' : 'none'">
+<div [ngClass]="( className | asyncState )" [style.display]="( display | asyncState ) ? 'block' : 'none'">
     <div class="sheets-content">
         <sheet [columnNumber]="0"></sheet>
         <sheet [columnNumber]="1"></sheet>

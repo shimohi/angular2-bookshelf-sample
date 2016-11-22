@@ -13,20 +13,32 @@ import {BookActionImpl} from "../../../action/BookAction";
 })
 export class SliderComponent {
 
-	private el: HTMLElement;
+	private element: Element;
 
 	constructor(
-		elementRef: ElementRef,
+		private elementRef: ElementRef,
 		private bookAction: BookActionImpl,
 		private bookState: OpenBookStateNotifier
 	) {
-		this.el = elementRef.nativeElement;
+		this.element = null;
+	}
+
+	ngAfterViewInit(): void {
+		this.element = (<Element>this.elementRef.nativeElement).getElementsByClassName("slider-bar").item(0);
 	}
 
 	onClick(event: MouseEvent) {
 
-		const point = ComponentUtils.getRelativeMousePoint(event, this.el);
-		const width = this.el.clientWidth;
+		if (this.element == null) {
+			return;
+		}
+		const point = ComponentUtils.getRelativeMousePoint(event, this.element);
+		const width = this.element.clientWidth;
+
+		if (this.bookState.geNotifiable().pageProgressionDirection === "rtl") {
+			this.bookAction.jump( ( 1 - point.x / width ) * 100);
+			return;
+		}
 		this.bookAction.jump( point.x / width * 100);
 
 	}
@@ -36,16 +48,47 @@ export class SliderComponent {
 		return this.bookState.observable.map((revision) => {
 
 			const state = revision.after;
-			if (state.pageCount == null || state.openPages[0].type === "spineKey" ) {
-				return state.currentCharIndex / state.charCount * 100;
+			if (state.openPages[0] == null) {
+				return {
+					display: "none"
+				};
 			}
 
-			const progress = (<PageNumberInfo>state.openPages[0]).pageNumber / state.pageCount * 100;
+			let start: number;
+			let end: number;
+
+			// 進捗率を計算
+			if (state.pageCount == null || state.openPages[0].type === "spineKey" ) {
+				start =  state.headCharIndex / state.charCount;
+				end = state.tailCharIndex / state.charCount;
+			} else {
+				const pages = <PageNumberInfo[]>state.openPages;
+				start = pages[0].pageNumber / state.pageCount;
+				end = ( pages[pages.length - 1].pageNumber + 1 ) / state.pageCount;
+			}
+
+			// right to left 対応
+			if (state.pageProgressionDirection === "rtl") {
+				const start1 = 1 - end;
+				end = 1 - start;
+				start = start1;
+			}
+
+			start = start * 90 + 5;
+			end = end * 90 + 5;
+
+			let width = end - start;
+			if ( width < 4 ) {
+				start = start + ( width / 2 ) - 2;
+				width = 4;
+			}
+
 			return {
-				top: "30%",
-				left: `${progress - 3}%`,
-				height: "40%",
-				width: "4%",
+				opacity: width >= 90 ? "0.0" : "1.0",
+				top: "40%",
+				left: `${start}%`,
+				height: "20%",
+				width: `${width}%`,
 			};
 		});
 	}

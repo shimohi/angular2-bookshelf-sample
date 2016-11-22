@@ -1,4 +1,4 @@
-<div class="viewer">
+<div class="viewer" [style.display]="( display | asyncState) ? 'block' : 'none'">
     <sheets></sheets>
     <left></left>
     <right></right>

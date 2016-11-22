@@ -85,8 +85,8 @@ export class OpenPageKeyImplFactories {
 		this.pageNumberInfoFactory = new PageNumberInfoImplFactory();
 
 		this.factories = {
-			"pageNumber": this.pageSpineInfoFactory,
-			"spineKey": this.pageNumberInfoFactory
+			"pageNumber": this.pageNumberInfoFactory,
+			"spineKey": this.pageSpineInfoFactory
 		};
 	}
 

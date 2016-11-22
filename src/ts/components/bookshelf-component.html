@@ -1,7 +1,10 @@
 <div class="bookshelf">
-    <div class="main-container">
-        <book-list></book-list>
-        <!--<viewer></viewer>-->
+    <background></background>
+    <div [ngClass]="( className | asyncState )">
+        <div class="main">
+            <book-list></book-list>
+            <viewer></viewer>
+        </div>
     </div>
     <themes></themes>
     <scale></scale>

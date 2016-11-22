@@ -73,20 +73,9 @@ export class BookAccessor {
 			let spinePage = (<PageSpineInfo>pageKey).pageOfSpine;
 
 			if (spineId === "a") {
-
-				if (spinePage < 20) {
-					page = 0;
-				} else {
-					page = 1;
-				}
+				page = spinePage;
 			} else {
-				if ( spinePage < 20){
-					page = 2;
-				} else if (spinePage < 40) {
-					page = 3;
-				} else {
-					page = 4;
-				}
+				page = spinePage + 2;
 			}
 		}
 
@@ -150,7 +139,7 @@ export class BookAccessor {
 		spineId: string,
 		charIndexOfSpine: number
 	): Promise<number> {
-		return Promise.resolve(spineId === "a" ? ( charIndexOfSpine / 40 ) | 0 : ( charIndexOfSpine / 60 ) | 0);
+		return Promise.resolve(spineId === "a" ? ( charIndexOfSpine / 20 ) | 0 : ( charIndexOfSpine / 20 ) | 0);
 	}
 
 	getSpineCharCount(

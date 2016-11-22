@@ -1,4 +1,4 @@
-<div class="slider" (mousedown)="onClick($event)">
+<div class="slider" (mousedown)="onClick($event)" [style.opacity]="( style | asyncState ).opacity">
     <div class="slider-content">
         <div class="slider-bar"></div>
         <div class="circle" [ngStyle]="( style | asyncState )"></div>

@@ -1,8 +1,8 @@
 .header {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 35%;
+  width: 30%;
   height: 10%; }
 
 .header-nav {
@@ -14,47 +14,47 @@
 .book-list-button {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 6%;
+  left: 6.25%;
   background-color: lightgreen; }
 
 .book-list-button-checked {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 6%;
+  left: 6.25%;
   background-color: green; }
 
 .viewer-button {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 21%;
+  left: 37.5%;
   background-color: lightgreen; }
 
 .viewer-button-checked {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 21%;
+  left: 37.5%;
   background-color: green; }
 
 .open-settings-button {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 36%;
+  left: 68.75%;
   background-color: lightgreen; }
 
 .open-settings-button-checked {
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
-  left: 36%;
+  left: 68.75%;
   background-color: green; }

@@ -34,7 +34,7 @@ export class ViewerSettingActionImpl implements ViewerSettingsAction {
 				this.bookAccessor,
 				bookState
 			);
-
+			state.notify();
 		});
 	}
 
@@ -44,6 +44,7 @@ export class ViewerSettingActionImpl implements ViewerSettingsAction {
 		viewState.width = width;
 		viewState.height = height;
 		this.refreshWithResize(viewState);
+		viewState.notify();
 
 	}
 
@@ -82,6 +83,5 @@ export class ViewerSettingActionImpl implements ViewerSettingsAction {
 			);
 
 		});
-
 	}
 }

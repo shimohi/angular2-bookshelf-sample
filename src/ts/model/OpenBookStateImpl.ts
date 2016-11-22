@@ -165,7 +165,7 @@ export class OpenBookStateImplFactory {
 		cl.tailSpineId = openBookState.tailSpineId;
 		cl.tailSpineCharIndex = openBookState.tailSpineCharIndex;
 
-		const len = openBookState.charCount;
+		const len = openBookState.openPages.length;
 		let i = 0 | 0;
 		while (i < len) {
 			cl.openPages[i] = this.openKeyFactory.clone(openBookState.openPages[i]);

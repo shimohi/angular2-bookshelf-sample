@@ -77,6 +77,18 @@ function movePageBySpineKey(
 
 	}).then((pageInfo) => {
 
+		if (pageInfo == null) {
+
+			bookState.headSpineId = null;
+			bookState.headSpineCharIndex = 0;
+			bookState.headCharIndex = 0;
+			bookState.tailSpineId = null;
+			bookState.tailSpineCharIndex = 0;
+			bookState.tailCharIndex = 0;
+			return null;
+
+		}
+
 		// ページ開始・終了位置の設定
 
 		bookState.headSpineId = pageInfo.spineId;
@@ -130,22 +142,46 @@ function movePageByPageNumber(
 		const start = ( pageNumber - mod );
 		bookState.openPages = [];
 		for (let i = 0; i < columnCount; i++) {
+
+			if (start + i >= bookState.pageCount) {
+				break;
+			}
 			const pageKey = bookState.createOpenPageNumberKey();
 			pageKey.pageNumber = start + i;
 			bookState.openPages[i] = pageKey;
+
+		}
+		if (bookState.openPages.length === 0) {
+			return null;
 		}
 		return bookAccessor.getPageInfo(bookState.openPages[0]);
 
 	}).then((startInfo) => {
+
+		if ( startInfo == null ) {
+			bookState.headCharIndex = 0;
+			bookState.headSpineCharIndex = 0;
+			bookState.headSpineId = null;
+			return null;
+		}
 
 		// 開始位置の設定
 
 		bookState.headCharIndex = startInfo.startCharIndex;
 		bookState.headSpineId = startInfo.spineId;
 		bookState.headSpineCharIndex = startInfo.startCharIndexOfSpine;
-		return bookAccessor.getPageInfo(bookState.openPages[columnCount - 1]);
+		return bookAccessor.getPageInfo(bookState.openPages[bookState.openPages.length - 1]);
 
 	}).then((endInfo) => {
+
+		if ( endInfo == null ) {
+			bookState.tailCharIndex = 0;
+			bookState.tailSpineCharIndex = 0;
+			bookState.tailSpineId = null;
+
+			bookState.notify();
+			return;
+		}
 
 		// 終了位置の設定
 

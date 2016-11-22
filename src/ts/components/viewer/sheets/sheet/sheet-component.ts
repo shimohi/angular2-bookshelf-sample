@@ -5,6 +5,7 @@ import {OpenBookStateNotifier} from "../../../../notifier/OpenBookStateNotifier"
 import {BookAccessor} from "../../../../service/BookAccessor";
 import {DisplayInfo} from "../../../../service/DisplayInfo";
 import * as ColumnTypes from "../../../../service/ColumnTypes";
+import { UIStateNotifier } from "../../../../notifier/UIStateNotifier";
 
 @Component({
 	moduleId: module.id,
@@ -21,6 +22,7 @@ export class SheetComponent implements AfterViewInit, OnDestroy {
 
 	constructor(
 		private el: ElementRef,
+		private uiState: UIStateNotifier,
 		private viewState: ViewStateNotifier,
 		private bookState: OpenBookStateNotifier,
 		private bookAccessor: BookAccessor

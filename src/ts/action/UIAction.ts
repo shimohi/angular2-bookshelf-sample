@@ -2,7 +2,6 @@ import {UIAction} from "./bookshelf-action-api";
 import {UIStateNotifier} from "../notifier/UIStateNotifier";
 import {Injectable} from "@angular/core";
 
-
 @Injectable()
 export class UIActionImpl implements UIAction {
 
@@ -20,15 +19,6 @@ export class UIActionImpl implements UIAction {
 		state.openSettings = true;
 		state.notify();
 	}
-
-	// closeSettings(): void {
-	// 	const state = this.uiStateNotifier.getNotifiable();
-	// 	if (state.openSettings === false) {
-	// 		return;
-	// 	}
-	// 	state.openSettings = false;
-	// 	state.notify();
-	// }
 
 	openViewer(): void {
 		const state = this.uiStateNotifier.getNotifiable();

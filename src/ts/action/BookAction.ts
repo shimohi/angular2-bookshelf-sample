@@ -26,37 +26,41 @@ export class BookActionImpl implements BookAction {
 		this.bookAccessor.changeBook(bookId).then(() => {
 
 			// bookIdの設定
-
 			bookState.contentsId = bookId;
 			return this.bookAccessor.getTitle();
 
 		}).then((title) => {
 
 			// Titleの設定
-
 			bookState.title = title;
 			return this.bookAccessor.getSpineIds();
 
 		}).then((spineIds) => {
 
 			// Spineの設定
-
 			this.spineIds = spineIds;
 			const map: {[key: string]: number} = {};
 			this.spineIndexMap = map;
 			const len = spineIds.length;
+
 			for (let i = 0 ; i < len; i++) {
 				map[spineIds[i]] = i;
 			}
 			bookState.currentSpineId = spineIds[0];
+			return this.bookAccessor.getCharCount();
+
+		}).then((charCount) => {
+
+			// charCountの設定
+			bookState.charCount = charCount;
 			return this.bookAccessor.getPageProgressionDirection();
 
 		}).then((pageProgressionDirection) => {
 
 			// pageProgressionDirectionの設定
-
 			bookState.pageProgressionDirection = pageProgressionDirection;
 			return this.bookAccessor.getRenditionLayout();
+
 		}).then((renditionLayout) => {
 
 			// renditionLayoutの設定
@@ -153,7 +157,7 @@ export class BookActionImpl implements BookAction {
 			return;
 		}
 
-		const pageNumber = ( bookState.pageCount * progress / 100 + 0.5 ) | 0;
+		const pageNumber = ( ( bookState.pageCount - 1 ) * progress / 100 + 0.5 ) | 0;
 		const key = bookState.createOpenPageNumberKey();
 		key.pageNumber = pageNumber;
 

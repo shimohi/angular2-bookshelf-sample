@@ -2,7 +2,7 @@
   width: 100%;
   position: absolute;
   bottom: 0;
-  height: 10%;
+  height: 5%;
   overflow: hidden;
 }
 .slider-content {
@@ -15,10 +15,11 @@
   position: absolute;
   width: 90%;
   height: 20%;
-  top: 30%;
-  left: 0;
+  top: 40%;
+  left: 5%;
   background-color: #607D8B;
 }
 .circle {
+  position: absolute;
   background-color: #cfd8dc;
 }

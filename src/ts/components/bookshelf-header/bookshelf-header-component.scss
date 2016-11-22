@@ -1,8 +1,8 @@
 .header {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: 35%;
+  width: 30%;
   height: 10%;
 }
 
@@ -16,13 +16,13 @@
 @mixin header-button{
   position: absolute;
   top: 1%;
-  width: 8%;
+  width: 25%;
   height: 80%;
 }
 
 @mixin abstract-book-list-button {
   @include header-button;
-  left: 6%;
+  left: 6.25%;
 }
 
 .book-list-button {
@@ -37,7 +37,7 @@
 
 @mixin abstract-viewer-button {
   @include header-button;
-  left: 21%;
+  left: 37.5%;
 }
 
 .viewer-button {
@@ -52,7 +52,7 @@
 
 @mixin abstract-open-settings-button {
   @include header-button;
-  left: 36%;
+  left: 68.75%;
 }
 
 .open-settings-button {

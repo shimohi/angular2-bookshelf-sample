@@ -4,14 +4,28 @@
   overflow: hidden;
   position: relative;
 }
-.main-container {
-  width: 100%;
-  height: 100%;
+
+@mixin abstract-main-container {
   overflow: hidden;
   position: absolute;
+}
+
+.main-container {
+  @include abstract-main-container;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
 }
+
+.main-container-small {
+  @include abstract-main-container;
+  width: 65%;
+  height: 65%;
+  top: 17.5%;
+  left: 15%;
+}
+
 .main {
   width: 100%;
   height: 100%;

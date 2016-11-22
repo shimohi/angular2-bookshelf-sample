@@ -27,6 +27,7 @@ export class BookListStateImplFactory {
 	createInstance(): BookListStateImpl {
 		return new BookListStateImpl();
 	}
+
 	clone(bookInfo: BookListState): BookListStateImpl {
 		const cl = this.createInstance();
 		const from = bookInfo.viewList;

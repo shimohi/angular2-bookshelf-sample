@@ -1,14 +1,8 @@
-<div class="column-settings" [style.opacity]="( display | asyncState ) ? '1.0' : '0.0'">
+<!--<div class="column-settings" [style.opacity]="( display | asyncState ) ? '1.0' : '0.0'">-->
+<div class="column-settings" [style.display]="( display | asyncState ) ? 'block' : 'none'">
     <div class="column-settings-content">
         <template ngFor let-type [ngForOf]="types" >
             <column-settings-item [type]="type"></column-settings-item>
         </template>
     </div>
 </div>
-<!--<div class="column-settings">-->
-    <!--<div class="column-settings-content">-->
-        <!--<template ngFor let-type [ngForOf]="types" >-->
-            <!--<column-settings-item [type]="type"></column-settings-item>-->
-        <!--</template>-->
-    <!--</div>-->
-<!--</div>-->

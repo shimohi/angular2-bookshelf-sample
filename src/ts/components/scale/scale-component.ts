@@ -1,5 +1,5 @@
 import {Observable, Subject, Subscription, BehaviorSubject} from "rxjs";
-import {Component, ElementRef, HostListener, AfterViewInit} from "@angular/core";
+import { Component, ElementRef, HostListener, AfterViewInit, OnDestroy } from "@angular/core";
 import {ViewStateNotifier} from "../../notifier/ViewStateNotifier";
 import {ComponentUtils} from "../ComponentUtils";
 import {UIStateNotifier} from "../../notifier/UIStateNotifier";
@@ -14,7 +14,7 @@ const SCALE_MIN: number = 1.0;
 	templateUrl: "scale-component.html",
 	styleUrls: [ "scale-component.css" ]
 })
-export class ScaleComponent implements AfterViewInit{
+export class ScaleComponent implements AfterViewInit, OnDestroy {
 
 	private el: HTMLElement;
 	private element: Element;
@@ -65,10 +65,17 @@ export class ScaleComponent implements AfterViewInit{
 		this.subject.next(this.calcScale(event));
 	}
 
+	@HostListener("window:resize")
+	onResize() {
+		this.subject.next(this.viewState.getNotifiable().scale);
+	}
+
 	@HostListener("window:mouseup", ["$event"])
 	onMouseUp(event: MouseEvent) {
+		if (this.dragging === true) {
+			this.viewerSettingsAction.changeScale(this.calcScale(event));
+		}
 		this.dragging = false;
-		this.viewerSettingsAction.changeScale(this.calcScale(event));
 	}
 
 	private calcScale(
@@ -94,7 +101,6 @@ export class ScaleComponent implements AfterViewInit{
 		const maxSize = width > height ? height : width;
 
 		let scale = SCALE_MAX * distance * 2 / maxSize;
-		// let scale = ( SCALE_MAX / ( maxSize / 2 ) ) * distance;
 		return ( scale < SCALE_MIN ) ? SCALE_MIN : ( ( scale > SCALE_MAX ) ? SCALE_MAX : scale );
 
 	}
@@ -124,7 +130,13 @@ export class ScaleComponent implements AfterViewInit{
 		return this.uiState.observable.filter((revision) => {
 			return revision.before == null || revision.before.openSettings !== revision.after.openSettings;
 		}).map((revision) => {
-			return revision.after.openSettings;
+			const result = revision.after.openSettings;
+			if (result === true) {
+				setTimeout(() => {
+					this.subject.next(this.viewState.getNotifiable().scale);
+				}, 300);
+			}
+			return result;
 		});
 	}
 }
